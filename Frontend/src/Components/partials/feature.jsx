@@ -1,5 +1,4 @@
 export default function Feature({img, title, content}) {
-    console.log(img, title, content)
     return (
        <div className="feature">
         
@@ -12,7 +11,7 @@ export default function Feature({img, title, content}) {
             <div className="feature-content">
         {content}
            </div> 
-        </div>
+         </div>
        </div>
     )
 }

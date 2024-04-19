@@ -29,3 +29,15 @@ width: 24px;
     width: 20px;
     fill: $tertiary-light;
 }
+.arrow{
+    height: 96px;
+    width: 96px;
+    stroke: $on-surface-light;
+}
+.dot_active{
+    fill: $secondary_light;
+}
+.dot_inactive{
+    fill: #D9D9D9;
+    fill-opacity: 85.1%;
+}
