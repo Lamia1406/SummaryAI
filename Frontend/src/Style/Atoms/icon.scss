@@ -1,0 +1,43 @@
+.moon{
+border: 1px solid $on-surface-light;
+fill: $on-surface-light;
+border-radius: 50%;
+stroke: $on-surface-light; 
+height: 24px;
+width: 24px;
+}
+.location{
+    height: 24px;
+    width: 24px;
+}
+.location path {
+    stroke: $on-surface-light;
+}
+.mail{
+    height: 24px;
+    width: 24px;
+    stroke: $on-surface-light;
+
+}
+.phone{
+    height: 24px;
+    width: 24px;
+    stroke: $on-surface-light;
+}
+.social{
+    height: 20px;
+    width: 20px;
+    fill: $tertiary-light;
+}
+.arrow{
+    height: 96px;
+    width: 96px;
+    stroke: $on-surface-light;
+}
+.dot_active{
+    fill: $secondary_light;
+}
+.dot_inactive{
+    fill: #D9D9D9;
+    fill-opacity: 85.1%;
+}

@@ -1,0 +1,44 @@
+.nav{
+    padding: 20px 72px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.30), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);  
+}
+.nav-right{
+    gap: 32px;
+    align-items: center;
+
+}
+.nav-left{
+    align-items: center;
+    gap: 8px;
+}
+.menu-item{
+    @include body-medium;
+    border: 1px solid $secondary-light;
+    color: $on-surface-light;
+    border-radius: 16px;
+    padding: 10px 24px;
+}
+
+.icon-container{
+    padding: 0 8px; 
+}
+.login-signup{
+    display: flex;
+align-items: center;
+border-radius: 100px;
+border: 1px solid $secondary-light;
+}
+.signup-btn{
+border-radius: 100px 0px 0px 100px;
+background: $secondary-container-light;
+padding: 10px 24px;
+}
+.login-btn{
+border-radius: 0px 100px 100px 0px;
+padding: 10px 12px;
+}
+.label {
+    color: $secondary-light;
+    text-align: center;
+    @include body-medium;
+}
