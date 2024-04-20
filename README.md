@@ -1,2 +1,1 @@
-# SummaryAI
-this is Lamia's branch
+# SummaryAIs
