@@ -1,7 +1,13 @@
-const Button = ({filled, enabled, icon, text}) => {
+const Button = ({styling, icon, text, bgcolor, color, onclick}) => {
     return (
-    <div className={filled ? "btn btn-filled": "btn btn-outlined"} >
-         {icon && <span>{icon}</span>}
+    <div className={`btn ${styling}`} style={{
+        ...(bgcolor && { backgroundColor: bgcolor }),
+  ...(color && { color: color })
+      }}
+      
+      onClick={onclick}
+      >
+         {icon}
         {text}
         </div>)
 }

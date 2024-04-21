@@ -6,6 +6,7 @@
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    @include label-large;
 }
 .btn-filled {
     background:$primary-light;
@@ -13,6 +14,14 @@
 }
 .btn-outlined {
     border: 1px solid $outline-light;
+    color: $primary-light;
+}
+.tonal{
+    background: $secondary-container-light;
+    color: $on-secondary-container-light;
+    text-align: center;
+}
+.text{
     color: $primary-light;
 }
 

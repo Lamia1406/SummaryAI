@@ -48,6 +48,7 @@ $on-surface-8opacity-light : rgba(44, 43, 48, 0.08);
 $outline-8opacity-light : rgba(105, 103, 114, 0.08);
 $error-8opacity-light : rgba(197, 38, 29, 0.08);
 $on-error-8opacity-light : rgba(255, 255, 255, 0.08);
+
  :root {
 background-color: $surface-light;
 
@@ -219,3 +220,5 @@ background-color: $surface-light;
 @import "./Style/Templates/footer.scss";
 @import "./Style/Components/feature.scss";
 @import "./Style/Components/pagination_line.scss";
+@import "./Style/Components/input.scss";
+@import "./Style/Templates/input_section.scss";

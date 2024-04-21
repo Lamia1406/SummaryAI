@@ -13,8 +13,8 @@ export default function Features() {
                 title: "لخص النص المكتوب", 
                 text: "قم بتلخيص المحتوى الطويل بسهولة إلى ملخصات موجزة، مما يوفر لك الوقت والجهد مع الحفاظ على الأفكار الرئيسية",
                 img: feature1,
-                left_icon_visibility : false,
-                right_icon_visibility : true,
+                left_icon_visibility : true,
+                right_icon_visibility : false,
                },
                {
                 title:  "لخص الملفات المحملة",
@@ -49,15 +49,15 @@ export default function Features() {
                 title:  "لخص محتوى المقالة باستخدام الرابط" ,
                 text: "قم ببساطة بإدخال رابط أي مقالة على الإنترنت واحصل على نسخة ملخّصة، مما يسهل عليك فهم المحتوى من مختلف مواقع الويب",
                 img: feature6,
-                  left_icon_visibility : true,
-                 right_icon_visibility : false,
+                  left_icon_visibility : false,
+                 right_icon_visibility : true,
                }
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
 
     const goToPrevious = () => {
-        setActiveIndex(prevIndex => (prevIndex === 0 ? content.length - 1 : prevIndex - 1));
+        setActiveIndex(prevIndex => (prevIndex === 0  ? content.length - 1 : prevIndex - 1));
     };
 
     const goToNext = () => {
@@ -76,8 +76,8 @@ export default function Features() {
                     content={content[activeIndex].text}
                     isVisibleRight={content[activeIndex].right_icon_visibility}
                     line_id={activeIndex}
-                    onClickLeft={goToPrevious}
-                    onClickRight={goToNext} 
+                    onClickLeft={goToNext}
+                    onClickRight={goToPrevious} 
                 />
                 </div>
             

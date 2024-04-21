@@ -112,7 +112,7 @@ class Summarizer:
         return mse
 
 # Load dataset from external file
-dataset_path = "./wanlp.xlsx"
+dataset_path = "summarymodel\wanlp.xlsx"
 df = pd.read_excel(dataset_path)
 
 # Extract texts and summaries from the dataframe
