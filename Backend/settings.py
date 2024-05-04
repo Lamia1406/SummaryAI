@@ -38,9 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'summarymodel',
-    'corsheaders',
-    'authentication'
+    'authentication',
+   'corsheaders'
 ]
+AUTH_USER_MODEL = 'authentication.CustomUser'
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -73,6 +75,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Backend.wsgi.application'
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins for simplicity. Adjust as needed.
+
 
 
 # Database
