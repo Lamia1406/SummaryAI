@@ -33,3 +33,20 @@ def login(request):
         else:
 
             return JsonResponse({'message': 'Incorrect email or password.'})  
+
+
+#history view
+
+from django.http import JsonResponse
+from .models import UserHistory
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def view_history(request):
+    # Récupérer l'historique de l'utilisateur connecté
+    user_history = UserHistory.objects.filter(user=request.user).order_by('-timestamp')
+
+    # Créer une liste de dictionnaires pour stocker les données d'historique
+    history_data = [{'action': entry.action, 'timestamp': entry.timestamp.strftime('%Y-%m-%d %H:%M:%S')} for entry in user_history]
+
+    return JsonResponse({'history': history_data})
