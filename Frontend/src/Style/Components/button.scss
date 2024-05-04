@@ -12,6 +12,10 @@
     background:$primary-light;
     color: $on-primary-light
 }
+.btn-login{
+    background-color: $secondary-container-light;
+    color: $on-secondary-container-light;
+}
 .btn-outlined {
     border: 1px solid $outline-light;
     color: $primary-light;
@@ -25,3 +29,12 @@
     color: $primary-light;
 }
 
+.CTA_summary{
+    background-color: $secondary-light;
+    color: $on-secondary-light;
+}
+
+.btn-signup{
+    background-color: $secondary-container-dark;
+    color: $on-secondary-container-dark;
+}

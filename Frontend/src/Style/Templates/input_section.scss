@@ -1,14 +1,47 @@
 .input_section{
     display: flex;
-padding: 64px 72px;
-justify-content: center;
-align-items: flex-end;
-gap: 16px;
+    min-height: 360px;
+    padding: var(--slide, 0px) 64px;
+    
+    justify-content: center;
+    align-items: flex-end;
+    gap: 16px;
+    flex: 1 0 0;
+    align-self: stretch;
+
+}
+
+.prompt_box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 490px;
+
 }
 .input_box{
+    height: 320px;
     width: 100%;
-    height: 100%;
 }
+.result_box{
+    display: flex;
+    height: 320px;
+    width: 490px;
+
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+    border-radius: 4px;
+    border: 1px solid $on-surface-variant-light;
+}
+.summary_features{
+    display: flex;
+justify-content:left;
+align-self: stretch;
+}
+
+
+
 .output{
     min-height: 320px;
     border: 1px solid $on-primary-container-light;

@@ -1,53 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-$primary-light : #4C4A7D;
+$primary-light : #1C1D2E;
 $on-primary-light : #FFFFFF;
-$secondary-light : #E8673D;
+$secondary-light : #E38970;
 $on-secondary-light : #FFFFFF;
-$tertiary-light : #DF6A82;
+$tertiary-light : #E8D0B0;
 $on-tertiary-light : #FFFFFF;
-$surface-light : #F0F0F1;
+$surface-light : #EDEDEF;
 $on-surface-light : #2C2B30;
-$outline-light : #696772;
-$error-light : #C5261D;
+$outline-light : #4C4D5B;
+$error-light : #E24940;
 $on-error-light : #FFFFFF;
 
-$primary-container-light : #CAC9DA;
-$on-primary-container-light : #23223A;
-$secondary-container-light : #FFD3C5;
-$on-secondary-container-light : #6B2F1C;
-$tertiary-container-light : #FCD4DC;
-$on-tertiary-container-light : #67313C;
-$error-container-light : #F3BDBA;
-$on-error-container-light : #5B120D;
+$primary-container-light : #BABABF;
+$on-primary-container-light : #0D0D15;
+$secondary-container-light : #FDDFD6;
+$on-secondary-container-light : #693F34;
+$tertiary-container-light : #FFF7EC;
+$on-tertiary-container-light : #6B6051;
+$error-container-light : #FDC9C6;
+$on-error-container-light : #68221D;
 
-$on-surface-variant-light : #4B4951;
-$outline-variant-light : #BAB9BE;
+$on-surface-variant-light : #363741;
+$outline-variant-light : #ADADB4;
 
-$primary-12opacity-light : rgba(76, 74, 125, 0.12);
+
+$primary-12opacity-light : rgba(28, 29, 46, 0.12);
 $on-primary-12opacity-light : rgba(255, 255, 255, 0.12);
-$secondary-12opacity-light : rgba(232, 103, 61, 0.12);
-$on-secondary-12opacity-light : rgba(255, 255, 255, 0.12);
-$tertiary-12opacity-light : rgba(223, 106, 130, 0.12);
+$secondary-12opacity-light : rgba(227, 137, 112, 0.12);
+$on-secondary-12opacity-light :rgba(255, 255, 255, 0.12);
+$tertiary-12opacity-light : rgb(232, 208, 176, 0.12);
 $on-tertiary-12opacity-light : rgba(255, 255, 255, 0.12);
-$surface-12opacity-light : rgba(240, 240, 241, 0.12);
+$surface-12opacity-light : rgba(237, 237, 239, 0.12);
 $on-surface-12opacity-light : rgba(44, 43, 48, 0.12);
-$outline-12opacity-light : rgba(105, 103, 114, 0.12);
-$error-12opacity-light : rgba(197, 38, 29, 0.12);
-$on-error-12opacity-light : rgba(255, 255, 255, 0.12);
+$outline-12opacity-light : rgba(76, 77, 91, 0.12);
+$error-12opacity-light : rgba(226, 73, 64, 0.12);
+$on-error-12opacity-light :rgba(255, 255, 255, 0.12);
 
-$primary-8opacity-light : rgba(76, 74, 125, 0.08);
-$on-primary-8opacity-light : rgba(255, 255, 255, 0.08);
-$secondary-8opacity-light : rgba(232, 103, 61, 0.08);
-$on-secondary-8opacity-light : rgba(255, 255, 255, 0.08);
-$tertiary-8opacity-light : rgba(223, 106, 130, 0.08);
-$on-tertiary-8opacity-light : rgba(255, 255, 255, 0.08);
-$surface-8opacity-light : rgba(240, 240, 241, 0.08);
-$on-surface-8opacity-light : rgba(44, 43, 48, 0.08);
-$outline-8opacity-light : rgba(105, 103, 114, 0.08);
-$error-8opacity-light : rgba(197, 38, 29, 0.08);
-$on-error-8opacity-light : rgba(255, 255, 255, 0.08);
+$primary-container-12opacity-light : rgba(186, 186, 191, 0.12);
+$on-primary-container-12opacity-light : rgba(13, 13, 21, 0.12);
+$secondary-container-12opacity-light : rgba(253, 223, 214, 0.12);
+$on-secondary-container-12opacity-light : rgba(105, 63, 52, 0.12);
+$tertiary-container-12opacity-light : rgba(255, 247, 236, 0.12);
+$on-tertiary-container-12opacity-light : rgba(107, 96, 81, 0.12);
+$error-container-12opacity-light : rgba(253, 201, 198, 0.12);
+$on-error-container-12opacity-light : rgba(104, 34, 29, 0.12);
+
+$on-surface-variant-12opacity-light : rgba(54, 55, 65, 0.12);
+$outline-variant-12opacity-light : rgba(173, 173, 180, 0.12);
+
+$primary-08opacity-light : rgba(28, 29, 46, 0.08);
+$on-primary-08opacity-light : rgba(255, 255, 255, 0.08);
+$secondary-08opacity-light : rgba(227, 137, 112, 0.08);
+$on-secondary-08opacity-light :rgba(255, 255, 255, 0.08);
+$tertiary-08opacity-light : rgb(232, 208, 176, 0.08);
+$on-tertiary-08opacity-light : rgba(255, 255, 255, 0.08);
+$surface-08opacity-light : rgba(237, 237, 239, 0.08);
+$on-surface-08opacity-light : rgba(44, 43, 48, 0.08);
+$outline-08opacity-light : rgba(76, 77, 91, 0.08);
+$error-08opacity-light : rgba(226, 73, 64, 0.08);
+$on-error-08opacity-light :rgba(255, 255, 255, 0.08);
+
+$primary-container-08opacity-light : rgba(186, 186, 191, 0.08);
+$on-primary-container-08opacity-light : rgba(13, 13, 21, 0.08);
+$secondary-container-08opacity-light : rgba(253, 223, 214, 0.08);
+$on-secondary-container-08opacity-light : rgba(105, 63, 52, 0.08);
+$tertiary-container-08opacity-light : rgba(255, 247, 236, 0.08);
+$on-tertiary-container-08opacity-light : rgba(107, 96, 81, 0.08);
+$error-container-08opacity-light : rgba(253, 201, 198, 0.08);
+$on-error-container-08opacity-light : rgba(104, 34, 29, 0.08);
+
+$on-surface-variant-08opacity-light : rgba(54, 55, 65, 0.08);
+$outline-variant-08opacity-light : rgba(173, 173, 180, 0.08);
+
+$on-primary-dark: #11121C;
+$secondary-dark: #FCCFC2;
+$on-surface-variant-dark: #ADADB4;
+$on-surface-dark: #C8C8CC;
+$tertiary-dark: #FFF3E2;
+$primary-dark: #AFB0C9;
+$secondary-container-dark: #B16B57;
+$on-secondary-container-dark: #FDDFD6;
+$on-tertiary-container-dark: #FFF7EC;
 
  :root {
 background-color: $surface-light;
@@ -222,3 +257,8 @@ background-color: $surface-light;
 @import "./Style/Components/pagination_line.scss";
 @import "./Style/Components/input.scss";
 @import "./Style/Templates/input_section.scss";
+@import "./Style/Components/menu_item.scss";
+@import "./Style/Pages/home.scss";
+@import "./Style/Pages/login.scss";
+@import "./Style/Pages/signup.scss";
+@import "./Style/Templates/authenticate_section.scss";

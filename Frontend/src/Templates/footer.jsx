@@ -10,15 +10,15 @@ export default function Footer() {
     <footer className="footer">
       <div className="flex  footer-right">
          <div className='footer-head'>
-            <Logo height={32}/>
+            <Logo height={32} color="logo_dark"/>
             <div className='footer-txt'>
             طريقك إلى النجاح: بساطة، تلخيص، تفوق
             </div>
             </div>
             <div className='socials'>
-                <Facebook/>
-                <Instagram/>
                 <Twitter/>
+                <Instagram/>
+                <Facebook/>
             </div>
         </div>
       <div className="hidden lg:flex footer-left">

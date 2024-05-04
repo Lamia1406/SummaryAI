@@ -1,6 +1,7 @@
 import Input from "../Components/input"
 import Button from "../Components/Button"
 import CloudUpload from "../Atoms/Icons/cloud_upload"
+import Dot from "../Atoms/Icons/dot"
 import axios from "axios"
 import { useState } from "react";
 export default function InputSection(){
@@ -18,12 +19,18 @@ export default function InputSection(){
     };
     return <div className="input_section">
        
-       <div className="input_box">
-        <Button styling="text" icon={<CloudUpload/>} text="حمل الملف" color="#67313C"/>
-       <Input button={<Button styling="tonal" text = "ترجمة"  bgcolor="#CAC9DA" color="#23223A" onclick = {Summarize}/>} placeholder = "أدخل أو الصق النص الخاص بك واضغط على تلخيص" val={inputText}
-                onchange={(e) => setInputText(e.target.value)} input_state="enabled" />
-       </div>
-       <div className="input_box output">
+        
+        <div className="prompt_box">
+            <div className="summary_features">
+            <Button styling="text" icon={<CloudUpload/>} text="حمل الملف" color="#67313C"/>
+            <Button styling="text" icon={<CloudUpload/>} text= "الصق رابط المقال" color="#67313C"/>
+            </div>
+        <div className="input_box">
+        <Input placeholder = "أدخل أو الصق النص الخاص بك واضغط على تلخيص" trailing_icon={<Dot/>} submit={<Button styling="tonal" text = "ترجمة"  bgcolor="#CAC9DA" color="#23223A" />}  val={inputText}
+                onchange={(e) => setInputText(e.target.value)}/>
+        </div>
+        </div>
+        <div className="result_box">
         <div className="result_txt">
             {summary}
 
@@ -31,8 +38,9 @@ export default function InputSection(){
         <label className="result_label">
         الملخص
         </label>
-       {/* <Input   input_state="enabled"/> */}
-       </div>
+        </div>
+      
+       
        
     </div>
 }

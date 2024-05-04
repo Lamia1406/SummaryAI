@@ -30,6 +30,9 @@ gap: 8px;
     box-sizing: border-box;
     border: none;
     outline: none; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    resize: none;
     margin: auto;
   
 }

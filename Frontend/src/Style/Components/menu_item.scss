@@ -1,0 +1,27 @@
+.menu_item{
+    border-radius: 12px;
+    background: $primary-light;
+    display: flex;
+    padding: 4px 8px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    color: $on-primary-light;
+    min-height: 32px;
+}
+.menu_item_title{
+@include body-large;
+}
+.menu_item_date{
+
+@include label-small;
+
+}
+.menu_item:hover{
+background: $on-primary-12opacity-light;
+box-shadow: 0px 1px 2px 0px $on-primary-12opacity-light, 0px 1px 3px 1px $primary-12opacity-light;
+}
+.menu_item:active, .active{
+background: $primary-container-12opacity-light;
+box-shadow: 0px 1px 2px 0px $primary-container-12opacity-light, 0px 1px 3px 1px  $primary-container-12opacity-light;
+}

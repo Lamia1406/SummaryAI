@@ -1,14 +1,14 @@
-const Button = ({styling, icon, text, bgcolor, color, onclick}) => {
+const Button = ({styling, icon, text, onclick}) => {
     return (
-    <div className={`btn ${styling}`} style={{
-        ...(bgcolor && { backgroundColor: bgcolor }),
-  ...(color && { color: color })
-      }}
+    <div className={`btn ${styling}`} 
       
       onClick={onclick}
       >
+        
+       <div className="button_text">
+       {text}
+       </div>
          {icon}
-        {text}
         </div>)
 }
 export default Button

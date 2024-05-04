@@ -1,59 +1,35 @@
 import Logo from '../Atoms/Logo'
 import Moon from '../Atoms/Icons/croissant_icon'
 import { useState } from 'react'
-export default function Navbar() {
-  const [theme, switchTheme] = useState("light")
- const toggleTheme = () => {
-  if (theme == "light")
-  {
-    const html = document.getElementById("root")
-    switchTheme("dark")
-    html.classList.add(theme)
-    html.classList.remove("light")
+import Button from '../Components/Button'
+import Add from '../Atoms/Icons/add'
+import Menu_Item from '../Components/menu_item'
+import { Link } from 'react-router-dom'
+export default function Navbar({hidden}) {
+  const [isHidden, setHidden]= useState(true)
 
-  }
-  else{
-    const html = document.getElementById("root")
-    switchTheme("light")
-    html.classList.add(theme)
-    html.classList.remove("dark")
-  }
- }
   return (
-    <header className=" nav">
-      <nav className="mx-auto flex items-center justify-between" aria-label="Global">
+    <header className="nav" onMouseEnter={()=> setHidden(false)} onMouseLeave={()=> setHidden(true)}>
+       <Link to="/">
+       <div className='logo'>
+     <Logo height={32} color={"logo_light"}/>
+     </div>
+       </Link>
      
-      <div className="flex  nav-right">
-      <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Nabdhah Logo</span>
-           <Logo height={32} color={"primary-light"}/>
-          </a>
-          <div className=" menu-item">
-         آداة التلخيص
+      <div className='CTA_button'>
+        <Button styling="CTA_summary" text = {isHidden == false && "آداة التلخيص"} icon={<Add name="add" type="outline"/>}/>
+      </div>
+      <div className='browsing_history'>
+        <div className='browsing_header'>
+          النشاطات السابقة
         </div>
-         
-        </div>
-        <div className="hidden lg:flex nav-left">
-        <div className='login-signup'>
-        
-        <div className='login-btn'>
-            <div className='label'>
-            تسجيل الدخول
-            </div>
-            </div>
-            <div className='signup-btn'>
-            <div className='label'>
-            انضم الآن
-            </div>
-            </div>
-       </div>
-       <div className='icon-container'>
-       <Moon  onClick={toggleTheme}/>
-       </div>
-      
-          
-        </div>
-      </nav>
+          <div className='browsing_activities'>
+            <Menu_Item title = {isHidden == false && "........تلخيص حول"}/>
+            <Menu_Item is_active title = {isHidden == false && "........تلخيص حول"}/>
+            <Menu_Item title = {isHidden == false && "........تلخيص حول"}/>
+          </div>
+      </div>
+       
     </header>
   )
 }

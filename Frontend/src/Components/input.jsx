@@ -1,14 +1,27 @@
 
-export default function Input({placeholder, button, input_state, onchange, val}){
+export default function Input({label,placeholder, leading_icon,trailing_icon, supporting_text, onchange, val}){
     return (
-        <form className={`input_container ${input_state}`}>
-        <div className="input_content">
-            <textarea className="input_text"  placeholder={placeholder} onChange={onchange} value={val}/>
-        </div>
-        <div className="input_submit">
-            {button}
-        </div>
+     <div className="text_field_container">
+            {
+                label && <div className={`input_label`}>
+                    {label}
+                    </div>
+            }
+           <div className={`input_container`}>
+            {
+                leading_icon && <div>
+                    {leading_icon}
+                </div>
+            }
+            <input className="input_text"  placeholder={placeholder} onChange={onchange} value={val}/>
+            {
+                trailing_icon && <div>
+                    {trailing_icon}
+                </div>
+            }
+       
 
-    </form>
+    </div>
+     </div>
     )
 }

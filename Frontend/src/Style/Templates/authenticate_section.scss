@@ -1,0 +1,23 @@
+.login-signup{
+    display: flex;
+justify-content: left;
+padding: 16px;
+}
+.signup-btn{
+border-radius: 100px 0px 0px 100px;
+background: $primary-container-light;
+padding: 10px 24px;
+cursor:pointer;
+}
+.login-btn{
+border-radius: 0px 100px 100px 0px;
+border: 1px solid   $primary-container-light;
+padding: 10px 12px;
+cursor:pointer;
+
+}
+.label {
+    color: $primary-light;
+    text-align: center;
+    @include body-medium;
+}

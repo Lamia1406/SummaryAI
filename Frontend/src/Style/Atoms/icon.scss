@@ -27,7 +27,7 @@ width: 24px;
 .social{
     height: 20px;
     width: 20px;
-    fill: $tertiary-light;
+    fill: $secondary_light;
 }
 .arrow{
     height: 52px;
@@ -40,4 +40,9 @@ width: 24px;
 .dot_inactive{
     fill: #D9D9D9;
     fill-opacity: 85.1%;
+}
+.add_icon{
+    height: 24px;
+    width: 24px;
+    stroke: $on-secondary-light;
 }
