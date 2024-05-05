@@ -5,3 +5,5 @@ numpy
 nltk
 pandas
 openpyxl
+gtts
+playsound
