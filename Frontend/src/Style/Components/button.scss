@@ -7,6 +7,7 @@
     gap: 8px;
     flex-shrink: 0;
     @include label-large;
+    cursor: pointer;
 }
 .btn-filled {
     background:$primary-light;
@@ -26,7 +27,7 @@
     text-align: center;
 }
 .text{
-    color: $primary-light;
+    color: $on-secondary-container-light;
 }
 
 .CTA_summary{

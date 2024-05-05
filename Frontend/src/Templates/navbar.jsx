@@ -1,35 +1,21 @@
 import Logo from '../Atoms/Logo'
-import Moon from '../Atoms/Icons/croissant_icon'
+import Authenticate from "../Templates/authenticate_section"
 import { useState } from 'react'
-import Button from '../Components/Button'
-import Add from '../Atoms/Icons/add'
-import Menu_Item from '../Components/menu_item'
-import { Link } from 'react-router-dom'
-export default function Navbar({hidden}) {
-  const [isHidden, setHidden]= useState(true)
-
+export default function Navbar() {
+ 
   return (
-    <header className="nav" onMouseEnter={()=> setHidden(false)} onMouseLeave={()=> setHidden(true)}>
-       <Link to="/">
-       <div className='logo'>
-     <Logo height={32} color={"logo_light"}/>
-     </div>
-       </Link>
-     
-      <div className='CTA_button'>
-        <Button styling="CTA_summary" text = {isHidden == false && "آداة التلخيص"} icon={<Add name="add" type="outline"/>}/>
-      </div>
-      <div className='browsing_history'>
-        <div className='browsing_header'>
-          النشاطات السابقة
-        </div>
-          <div className='browsing_activities'>
-            <Menu_Item title = {isHidden == false && "........تلخيص حول"}/>
-            <Menu_Item is_active title = {isHidden == false && "........تلخيص حول"}/>
-            <Menu_Item title = {isHidden == false && "........تلخيص حول"}/>
-          </div>
-      </div>
-       
+    <header className=" nav">
+      <nav className="mx-auto flex items-center justify-between" aria-label="Global">
+      <a href="#" className="-m-1.5 p-1.5">
+            <span className="sr-only">Nabdhah Logo</span>
+           <Logo height={32} color={"logo_light"}/>
+          </a>
+         
+       <Authenticate/>
+          
+      
+         
+      </nav>
     </header>
   )
 }

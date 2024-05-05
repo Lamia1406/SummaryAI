@@ -7,7 +7,6 @@ const Home = () => {
     return <div>      
         <Navbar/>
         <div className="main_content">
-            <Authenticate/>
         <InputSection/>
         <Features/>
        <Footer/>
