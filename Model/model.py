@@ -5,34 +5,27 @@ from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import nltk
 import pandas as pd
-from nltk.tokenize import word_tokenize, sent_tokenize  # Add this line to import word_tokenize
 
-# Download NLTK stopwords dataset
+# Download NLTK stopwords dataset and Punkt tokenizer
 nltk.download('stopwords')
-nltk.download('punkt')  # Add this line to download the Punkt tokenizer
+nltk.download('punkt')
 
-# Arabic stop words
+# Import Arabic stopwords
 stop_words_arabic = set(nltk.corpus.stopwords.words('arabic'))
 
 # Function to preprocess Arabic text: remove stop words, punctuation, and digits
 def preprocess_arabic_text(text):
-    # Remove emails
-    text = re.sub(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', '', text)
-
-    # Remove hashtags
-    text = re.sub(r'#\w+', '', text)
-
-    # Remove non-Arabic characters and symbols
-    text = re.sub(r'[^\u0600-\u06FF\s]', '', text)
-
-    # Remove digits
-    text = re.sub(r'\d+', '', text)
-
-    # Remove punctuation
-    text = re.sub(r'[^\w\s]', '', text)
+    # Remove mentions (@user)
+    cleaned_text = re.sub(r'@\w+', '', text)
+    # Remove special characters including ?, !
+    cleaned_text = re.sub(r'[؟!]', '', cleaned_text)
+    # Remove other special characters
+    cleaned_text = re.sub(r'[^\w\s\u0600-\u06FF]', '', cleaned_text)
+    # Clean up extra spaces
+    cleaned_text = re.sub(r'\s+', ' ', cleaned_text).strip()
 
     # Tokenize text
-    words = text.split()
+    words = cleaned_text.split()
 
     # Filter out stop words and return the preprocessed text
     filtered_words = [word for word in words if word.lower() not in stop_words_arabic]
@@ -44,7 +37,6 @@ class Summarizer:
         self.tfidf_vectorizer = TfidfVectorizer(preprocessor=preprocess_arabic_text)
 
     def fit(self, texts, summaries):
-        # Transform texts to TF-IDF vectors
         self.tfidf_matrix = self.tfidf_vectorizer.fit_transform(texts)
         self.summaries = summaries
 
@@ -52,42 +44,30 @@ class Summarizer:
         # Preprocess the new text
         preprocessed_new_text = preprocess_arabic_text(new_text)
 
-        # Tokenize the preprocessed text into words
-        words = word_tokenize(preprocessed_new_text)
+        # Calculate TF-IDF weights for words in the new text
+        new_text_tfidf = self.tfidf_vectorizer.transform([preprocessed_new_text])
 
-        # Create a frequency table to keep track of word frequencies
-        freq_table = {}
-        for word in words:
-            word = word.lower()
-            if word in stop_words_arabic:
-                continue
-            if word in freq_table:
-                freq_table[word] += 1
-            else:
-                freq_table[word] = 1
+        # Calculate the TF-IDF scores for each sentence
+        sentences = nltk.sent_tokenize(new_text)
+        sentence_scores = {}
+        for i, sentence in enumerate(sentences):
+            words_in_sentence = nltk.word_tokenize(sentence)
+            sentence_tfidf_sum = 0
+            for word in words_in_sentence:
+                if word.lower() not in stop_words_arabic:
+                    word_tfidf = new_text_tfidf[0, self.tfidf_vectorizer.vocabulary_.get(word, -1)]
+                    if word_tfidf > 0:
+                        sentence_tfidf_sum += word_tfidf
+            sentence_scores[i] = sentence_tfidf_sum / len(words_in_sentence) if len(words_in_sentence) > 0 else 0  # Normalize by sentence length
 
-        # Tokenize the preprocessed text into sentences
-        sentences = sent_tokenize(new_text)
+        # Sort sentences by their scores
+        sorted_sentences = sorted(sentence_scores.items(), key=lambda x: x[1], reverse=True)
 
-        # Calculate the score for each sentence based on word frequency
-        sentence_value = {}
-        for sentence in sentences:
-            for word, freq in freq_table.items():
-                if word in sentence.lower():
-                    if sentence in sentence_value:
-                        sentence_value[sentence] += freq
-                    else:
-                        sentence_value[sentence] = freq
-
-        # Calculate the average score of sentences
-        sum_values = sum(sentence_value.values())
-        average_score = sum_values / len(sentence_value) if len(sentence_value) > 0 else 0
-
-        # Generate the summary based on sentences with scores higher than 1.2 times the average score
-        summary = ''
-        for sentence in sentences:
-            if (sentence in sentence_value) and (sentence_value[sentence] > (1.2 * average_score)):
-                summary += " " + sentence
+        # Generate the summary based on top scoring sentences
+        summary_length = min(len(sentences) // 3, 3)  # Adjust summary length as needed
+        top_sentences = sorted_sentences[:summary_length]
+        summary_sentences = [sentences[idx] for idx, _ in top_sentences]
+        summary = ' '.join(summary_sentences)
 
         return summary.strip()
 
@@ -112,7 +92,7 @@ class Summarizer:
         return mse
 
 # Load dataset from external file
-dataset_path = "C:\\Users\\W11\\Desktop\\wanlp2.xlsx"
+dataset_path = "C:\\Users\\W11\\Desktop\\wanlp .csv"
 df = pd.read_excel(dataset_path)
 
 # Extract texts and summaries from the dataframe
@@ -135,6 +115,8 @@ mse = summarizer.evaluate(test_texts, num_test_samples)
 print(f"Mean Squared Error (MSE) on the test set: {mse}")
 
 # Example usage with a new text
-new_text = "في عالم مليء بالتحولات والتغيرات السريعة، يظل الاقتصاد محورًا حيويًا يؤثر على حياة الناس وتطور المجتمعات. تعتمد الاقتصادات الحديثة على مجموعة من العوامل المتشعبة، تلعب السياسات الحكومية والتطورات التكنولوجية والتغيرات الاجتماعية دورًا بارزًا في تشكيل مسار الاقتصاد. على سبيل المثال، يؤثر السياسات النقدية والمالية للحكومة على معدلات الفائدة ومعدلات التضخم، وتعمل التكنولوجيا على تحسين الإنتاجية وتغيير طبيعة العمل. تلعب القيم والثقافة دورًا حاسمًا في تحديد أنماط الاستهلاك والإنفاق وسلوك المستهلكين. لا يمكن إغفال دور التجارة الدولية في تعزيز الاقتصاد وتوسيع نطاق الفرص. في الختام، يظل الاقتصاد مجالًا ديناميكيًا يتطلب فهمًا عميقًا ورؤية استراتيجية لضمان النمو والاستدامة."
-summary = summarizer.predict(new_text)
+text = "في عالم مليء بالتحولات والتغيرات السريعة، يظل الاقتصاد محورًا حيويًا يؤثر على حياة الناس وتطور المجتمعات. تعتمد الاقتصادات #الحديثة على مجموعة من العوامل المتشعبة، تلعب السياسات الحكومية والتطورات التكنولوجية والتغيرات الاجتماعية دورًا بارزًا في تشكيل مسار الاقتصاد. على سبيل المثال، يؤثر السياسات النقدية والمالية للحكومة على معدلات الفائدة ومعدلات التضخم، وتعمل التكنولوجيا على تحسين الإنتاجية وتغيير طبيعة العمل. تلعب القيم والثقافة دورًا حاسمًا في تحديد أنماط الاستهلاك والإنفاق وسلوك المستهلكين. لا يمكن إغفال دور التجارة الدولية في تعزيز الاقتصاد وتوسيع نطاق الفرص. في الختام، يظل الاقتصاد مجالًا ديناميكيًا يتطلب فهمًا عميقًا ورؤية استراتيجية لضمان النمو والاستدامة."
+
+summary = summarizer.predict(text)
 print(f"Summary for new text: {summary}")
+
